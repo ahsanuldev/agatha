@@ -53,6 +53,25 @@ export default function PageHeader({
   className = '',
   children,
 }: PageHeaderProps) {
+  const [scrollY, setScrollY] = React.useState(0);
+
+  React.useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Default breadcrumbs if none provided
   const defaultBreadcrumbs: BreadcrumbItem[] = [
     { label: 'Home', href: '/' },
@@ -66,10 +85,13 @@ export default function PageHeader({
       id="page-header-section"
       className={`relative overflow-hidden text-center text-white pt-24 pb-36 md:pt-32 md:pb-44 lg:pt-36 lg:pb-48 px-5 md:px-11 ${className}`}
     >
-      {/* Background Image Layer */}
+      {/* Background Image Layer with Parallax Effect */}
       <div
-        className="page-header-image absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out scale-105"
-        style={{ backgroundImage: `url('${bgImage}')` }}
+        className="page-header-image absolute -top-[15%] left-0 w-full h-[130%] bg-cover bg-center bg-no-repeat pointer-events-none will-change-transform"
+        style={{
+          backgroundImage: `url('${bgImage}')`,
+          transform: `translate3d(0, ${scrollY * 0.35}px, 0)`,
+        }}
         aria-hidden="true"
       />
 
@@ -79,7 +101,7 @@ export default function PageHeader({
         aria-hidden="true"
       />
 
-      {/* Content Container */}
+      {/* Content Container (Scrolls normally) */}
       <div className="container-fluid page-header-content relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center">
         {/* Main Title */}
         <h1 className="album-title text-3xl sm:text-4xl md:text-5xl font-extralight uppercase tracking-[6px] text-white mb-4 leading-tight">
