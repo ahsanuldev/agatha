@@ -58,9 +58,9 @@ const socials = [
 const Footer = () => {
   return (
     <footer id="footer" className="bg-[#0B0B0B] border-t border-white/5 text-[#999999]">
-      <div className="footer-inner w-full px-[15px] md:px-[40px] py-[17px] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="footer-inner w-full px-[15px] md:px-[45px] py-[17px] flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Copyright */}
-        <div className="copyright text-[12px] uppercase tracking-normal font-normal text-[#999999]">
+        <div className="copyright text-[12px] uppercase tracking-[1px] font-normal text-[#999999]">
           &copy; Agatha / All rights reserved
         </div>
 

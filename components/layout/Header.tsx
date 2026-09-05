@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuTrigger }) => {
         <div className="flex items-center gap-6">
           {/* Desktop Navigation Links */}
           <nav className="hidden md:block">
-            <ul className="flex items-center gap-6 text-[13px] font-medium uppercase tracking-normal">
+            <ul className="flex items-center gap-6 text-[13px] font-medium uppercase tracking-[1px]">
               {navItems.map((item) => {
                 const active = isItemActive(item);
                 const hasChildren = item.children && item.children.length > 0;
@@ -94,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuTrigger }) => {
                           <li key={child.label}>
                             <Link
                               href={child.href}
-                              className={`flex items-center justify-between px-5 py-2.5 text-[12px] font-normal tracking-normal uppercase transition-colors text-gray-400 hover:text-white hover:bg-[#1c1c1c] ${
+                              className={`flex items-center justify-between px-5 py-2.5 text-[12px] font-normal tracking-[1px] uppercase transition-colors text-gray-400 hover:text-white hover:bg-[#1c1c1c] ${
                                 child.href === pathname && child.href !== '#' ? 'text-white' : ''
                               }`}
                             >
