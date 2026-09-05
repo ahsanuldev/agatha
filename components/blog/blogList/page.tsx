@@ -113,14 +113,14 @@ export default function BlogList() {
 
                         {/* Post Info */}
                         <div className="bli-info">
-                          <h2 className="bli-title text-2xl md:text-[26px] font-light uppercase tracking-wide mb-2">
+                          <h2 className="bli-title text-2xl md:text-[26px] font-light uppercase tracking-[2px] mb-2 leading-snug">
                             <Link href={`/blog/${post.slug}`} className="text-[#999999] hover:text-white transition-colors duration-200">
                               {post.title}
                             </Link>
                           </h2>
 
                           {/* Post Meta */}
-                          <div className="bli-meta text-xs text-[#888888] uppercase tracking-wider mb-4 flex flex-wrap items-center gap-1.5 font-mono">
+                          <div className="bli-meta text-xs text-[#888888] uppercase tracking-[1.5px] mb-4 flex flex-wrap items-center gap-1.5 font-mono">
                             <a href="#0" className="article-time text-[#888888] hover:text-white transition-colors">{post.date}</a>
                             <span>- by:</span>
                             <a href="#0" className="article-author text-[#888888] hover:text-white transition-colors">{post.author}</a>
@@ -129,7 +129,7 @@ export default function BlogList() {
                           </div>
 
                           {/* Excerpt */}
-                          <p className="bli-desc text-sm text-[#999999] leading-relaxed mb-6 font-mono">
+                          <p className="bli-desc text-sm text-[#999999] leading-[1.8] mb-6 font-mono">
                             {post.excerpt}
                           </p>
 
@@ -137,7 +137,7 @@ export default function BlogList() {
                           <div className="bli-button text-right">
                             <Link
                               href={`/blog/${post.slug}`}
-                              className="btn btn-dark btn-rounded-5x btn-sm inline-flex items-center justify-center px-6 py-2 rounded-full bg-[#1e1e1e] hover:bg-white text-[#dddddd] hover:text-black border border-neutral-700/60 text-xs font-mono uppercase tracking-wider transition-all duration-200 shadow-md"
+                              className="btn btn-dark btn-rounded-5x btn-sm inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#1e1e1e] hover:bg-white text-[#dddddd] hover:text-black border border-neutral-700/60 text-xs font-mono uppercase tracking-[2px] transition-all duration-200 shadow-md"
                             >
                               Read More
                             </Link>
