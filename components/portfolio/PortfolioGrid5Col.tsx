@@ -104,11 +104,14 @@ export default function PortfolioGrid5Col() {
       <div className="w-full px-[15px] md:px-[45px]">
         {/* .content-wrap card container with dark background & 40px padding */}
         <div className="content-wrap bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl">
-          {/* Gallery Top Content Filter Bar */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 pb-4 border-b border-neutral-900/60">
-            <div className="flex flex-wrap items-center gap-6">
-              <h2 className="font-mono text-xs uppercase text-[#999999] tracking-widest font-normal">Filters</h2>
-              <div className="flex flex-wrap items-center gap-5 font-mono text-xs uppercase tracking-wider">
+          {/* Gallery Top Content Filter Bar matching screenshot */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+            {/* Left: Stacked FILTERS heading & category links */}
+            <div>
+              <h2 className="font-mono text-[12px] uppercase text-[#888888] tracking-widest font-normal mb-2.5">
+                FILTERS
+              </h2>
+              <div className="flex flex-wrap items-center gap-6 font-mono text-[13px] uppercase tracking-wider">
                 {[
                   { id: 'all', label: 'all' },
                   { id: 'fashion', label: 'Fashion' },
@@ -123,10 +126,10 @@ export default function PortfolioGrid5Col() {
                       e.preventDefault();
                       setActiveFilter(tab.id);
                     }}
-                    className={`transition-colors ${
+                    className={`relative py-1 transition-colors ${
                       activeFilter === tab.id
-                        ? 'text-white font-semibold underline underline-offset-4 decoration-neutral-500'
-                        : 'text-[#999999] hover:text-white'
+                        ? 'text-white font-medium after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-white'
+                        : 'text-[#999999] hover:text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200'
                     }`}
                   >
                     {tab.label}
@@ -135,19 +138,25 @@ export default function PortfolioGrid5Col() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 font-mono text-xs text-[#999999] uppercase tracking-wider">
-              <label htmlFor="show-items">Show:</label>
-              <select
-                id="show-items"
-                className="bg-[#1a1a1a] text-white border border-neutral-800 rounded px-2 py-1 text-xs font-mono outline-none focus:border-neutral-600 cursor-pointer"
-                value={showCount}
-                onChange={(e) => setShowCount(Number(e.target.value))}
-              >
-                <option value={10}>10 items</option>
-                <option value={15}>15 items</option>
-                <option value={50}>50 items</option>
-                <option value={100}>Show All</option>
-              </select>
+            {/* Right: SHOW: 10 items ▾ dropdown pill */}
+            <div className="flex items-center gap-2.5 font-mono text-[11px] text-[#999999] uppercase tracking-wider self-start md:self-end">
+              <span>SHOW:</span>
+              <div className="relative">
+                <select
+                  id="show-items"
+                  className="bg-[rgba(154,154,154,0.16)] text-white border border-neutral-700/60 rounded-full pl-4 pr-8 py-1.5 text-[11px] font-mono outline-none focus:border-neutral-500 cursor-pointer appearance-none"
+                  value={showCount}
+                  onChange={(e) => setShowCount(Number(e.target.value))}
+                >
+                  <option value={10} className="bg-[#222] text-white">10 items</option>
+                  <option value={15} className="bg-[#222] text-white">15 items</option>
+                  <option value={50} className="bg-[#222] text-white">50 items</option>
+                  <option value={100} className="bg-[#222] text-white">Show All</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#999999] text-[9px]">
+                  ▼
+                </div>
+              </div>
             </div>
           </div>
 
@@ -175,7 +184,7 @@ export default function PortfolioGrid5Col() {
 
                       {/* Centered Caption & Meta */}
                       <div className="text-center pt-3 font-mono">
-                        <h2 className="text-[#CECECE] text-sm uppercase font-normal tracking-wide hover:text-white transition-colors">
+                        <h2 className="text-[#CECECE] text-[14px] uppercase font-normal tracking-wide hover:text-white transition-colors">
                           {album.title}
                         </h2>
                         <div className="text-[#999999] text-[11px] uppercase tracking-wider mt-1">
