@@ -34,9 +34,9 @@ export const navItems: NavItem[] = [
   },
   {
     label: 'Portfolio',
-    href: '/portfolio',
+    href: '/portfolio/all',
     children: [
-      { label: 'All Work', href: '/portfolio' },
+      { label: 'All Work', href: '/portfolio/all' },
       { label: 'Fashion', href: '/portfolio/fashion' },
       { label: 'Portraits', href: '/portfolio/portraits' },
       { label: 'Outdoor', href: '/portfolio/outdoor' },
