@@ -124,15 +124,9 @@ p {
   letter-spacing: 1px;
 }
 
-a, a:focus {
+a, a:focus, a:hover {
   text-decoration: none;
-  color: #987F28;
   outline: none;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #B79932;
 }
 
 hr {
