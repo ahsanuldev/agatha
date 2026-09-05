@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PortfolioAllPage() {
   return (
-    <main className="min-h-screen bg-[#161616] text-white">
+    <main className="min-h-screen bg-[#111111] text-white">
       {/* Page Header matching Agatha template */}
       <PageHeader
         title="PORTFOLIO"

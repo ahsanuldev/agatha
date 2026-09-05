@@ -83,14 +83,14 @@ export default function PageHeader({
   return (
     <section
       id="page-header-section"
-      className={`relative overflow-hidden text-center text-white pt-24 pb-36 md:pt-32 md:pb-44 lg:pt-36 lg:pb-48 px-5 md:px-11 ${className}`}
+      className={`relative overflow-hidden text-center text-white pt-28 pb-32 md:pt-36 md:pb-40 lg:pt-40 lg:pb-48 px-5 md:px-11 ${className}`}
     >
-      {/* Background Image Layer with Parallax Effect */}
+      {/* Dynamic Background Image Layer with Parallax Effect */}
       <div
-        className="page-header-image absolute -top-[15%] left-0 w-full h-[130%] bg-cover bg-center bg-no-repeat pointer-events-none will-change-transform"
+        className="page-header-image absolute -top-[10%] left-0 w-full h-[125%] bg-cover bg-center bg-no-repeat pointer-events-none"
         style={{
           backgroundImage: `url('${bgImage}')`,
-          transform: `translate3d(0, ${scrollY * 0.35}px, 0)`,
+          transform: `translate3d(0, ${(Math.max(0, scrollY) * 0.25).toFixed(2)}px, 0)`,
         }}
         aria-hidden="true"
       />
@@ -101,24 +101,30 @@ export default function PageHeader({
         aria-hidden="true"
       />
 
-      {/* Content Container (Scrolls normally) */}
-      <div className="container-fluid page-header-content relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center">
-        {/* Main Title */}
-        <h1 className="album-title text-3xl sm:text-4xl md:text-5xl font-extralight uppercase tracking-[6px] text-white mb-4 leading-tight">
+      {/* Bottom Gradient Blend Masking (Fades image seamlessly into page background #111111) */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-[#111111]/50 to-[#111111] pointer-events-none z-0"
+        aria-hidden="true"
+      />
+
+      {/* Content Container (Comfortably proportioned spacing) */}
+      <div className="container-fluid page-header-content relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center -mt-3 md:-mt-6">
+        {/* Main Title (Slightly smaller) */}
+        <h1 className="album-title text-2xl sm:text-3xl md:text-4xl font-extralight uppercase tracking-[6px] text-white mb-3 leading-tight">
           {title}
         </h1>
 
         {/* Subtitle / Meta Info (Optional) */}
         {subtitle && (
-          <p className="album-meta text-xs sm:text-sm text-neutral-300 font-light tracking-[2px] uppercase mb-4 opacity-90">
+          <p className="album-meta text-xs sm:text-sm text-neutral-300 font-light tracking-[2px] uppercase mb-3 opacity-90">
             {subtitle}
           </p>
         )}
 
         {/* Breadcrumb Navigation */}
         {itemsToRender && itemsToRender.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mt-2">
-            <ol className="breadcrumb flex items-center justify-center space-x-2 text-xs uppercase tracking-[2px] font-light text-neutral-400">
+          <nav aria-label="Breadcrumb" className="mt-1">
+            <ol className="breadcrumb flex items-center justify-center space-x-2 text-[11px] uppercase tracking-[2px] font-light text-neutral-400">
               {itemsToRender.map((item, idx) => {
                 const isLast = idx === itemsToRender.length - 1;
                 return (
