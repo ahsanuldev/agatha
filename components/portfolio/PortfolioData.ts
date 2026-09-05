@@ -22,19 +22,58 @@ export const portfolioItems: PortfolioItem[] = [
     { id: 10, title: "Magically Surreal", categories: ["black-and-white"], photos: 62, views: 850, client: "Sirabella's Photography", website: "www.sirabella.ee", author: "John Smith" },
 ];
 
-// Detail shots shown on a portfolio-single page — every single page in the
-// original theme shared the same demo image set with different titles.
-export const portfolioSingleShots = [
-    { title: "Lana Melray", category: "fashion", favorites: 69 },
-    { title: "Meric ac Setre", category: "fashion", favorites: 56 },
-    { title: "Nertes Mavera Tatum", category: "portraits", favorites: 79 },
-    { title: "Kazek Maites", category: "portraits", favorites: 188 },
-    { title: "Embila Sent Tarum", category: "portraits", favorites: 41 },
-    { title: "Neveck Kanis", category: "outdoor", favorites: 97 },
-    { title: "Satera Vatum", category: "outdoor", favorites: 254 },
-    { title: "Etna Manick", category: "outdoor", favorites: 113 },
-    { title: "Tzitra Vat Torres", category: "black & white", favorites: 80 },
-    { title: "Narrat Lacus", category: "black & white", favorites: 163 },
+export type SingleShotItem = {
+  id: number;
+  title: string;
+  category: string;
+  favorites: number;
+  imageUrl: string;
+};
+
+export const portfolioSingleShots: SingleShotItem[] = [
+  {
+    id: 1,
+    title: 'Lana Melray',
+    category: 'fashion',
+    favorites: 69,
+    imageUrl: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1600&auto=format&fit=crop',
+  },
+  {
+    id: 2,
+    title: 'Meric ac Setre',
+    category: 'fashion',
+    favorites: 56,
+    imageUrl: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop',
+  },
+  {
+    id: 3,
+    title: 'Nertes Mavera Tatum',
+    category: 'portraits',
+    favorites: 79,
+    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1600&auto=format&fit=crop',
+  },
+  {
+    id: 4,
+    title: 'Kazek Maites',
+    category: 'portraits',
+    favorites: 188,
+    imageUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1600&auto=format&fit=crop',
+  },
+  {
+    id: 5,
+    title: 'Embila Sent Tarum',
+    category: 'portraits',
+    favorites: 41,
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1600&auto=format&fit=crop',
+  },
+  {
+    id: 6,
+    title: 'Neveck Kanis',
+    category: 'outdoor',
+    favorites: 97,
+    imageUrl: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1600&auto=format&fit=crop',
+  },
 ];
 
-export const portfolioFilters = ["all", "fashion", "portraits", "black-and-white", "outdoor"];
+
+export const portfolioFilters = ["all", "fashion", "portraits", "black-and-white", "outdoor"];

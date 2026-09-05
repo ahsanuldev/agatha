@@ -12,7 +12,7 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Portfolio', href: '/portfolio/all' },
+  { label: 'Portfolio', href: '/portfolio' },
   { label: 'Blog', href: '/blog' },
   { label: 'About Me', href: '/about' },
   { label: 'FAQ', href: '/faq' },

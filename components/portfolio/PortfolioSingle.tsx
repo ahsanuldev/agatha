@@ -1,143 +1,373 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Link from 'next/link';
 import { PortfolioItem, portfolioSingleShots } from './PortfolioData';
 
 type PortfolioSingleProps = {
   item: PortfolioItem;
 };
 
-const PortfolioSingle = ({ item }: PortfolioSingleProps) => {
-  const [active, setActive] = useState<number | null>(null);
+export default function PortfolioSingle({ item }: PortfolioSingleProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [favorited, setFavorited] = useState<Set<number>>(new Set());
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const toggleFavorite = (i: number) => {
     setFavorited((prev) => {
       const next = new Set(prev);
-
       if (next.has(i)) {
         next.delete(i);
       } else {
         next.add(i);
       }
-
       return next;
     });
   };
 
-  const shots = portfolioSingleShots.slice(
-    0,
-    item.photos > 14 ? 10 : Math.min(6, portfolioSingleShots.length),
-  );
+  const prevId = item.id > 1 ? item.id - 1 : 10;
+  const nextId = item.id < 10 ? item.id + 1 : 1;
+
+  const currentShot = lightboxIndex !== null ? portfolioSingleShots[lightboxIndex] : null;
+
+  const handlePrevShot = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex(lightboxIndex > 0 ? lightboxIndex - 1 : portfolioSingleShots.length - 1);
+    }
+  };
+
+  const handleNextShot = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex(lightboxIndex < portfolioSingleShots.length - 1 ? lightboxIndex + 1 : 0);
+    }
+  };
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[280px_1fr] gap-12">
-      <aside className="space-y-6">
-        <h1 className="text-xs uppercase tracking-wide2 text-gray-400">About Project</h1>
+    <section id="content-section" className="portfolio-single portfolio-single-4 -mt-[80px] md:-mt-[100px] relative z-10 w-full pb-16">
+      <div className="w-full px-[15px] md:px-[45px]">
+        <div className="content-wrap bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+              
+              {/* Left Column: Metadata & Details */}
+              <div className="col-left md:col-span-4 lg:col-span-3 font-mono">
+                <div className="portfolio-info">
+                  <h1 className="text-sm uppercase text-white font-medium tracking-wider mb-1">
+                    About Project:
+                  </h1>
 
-        <div className="text-sm text-gray-400">
-          {item.photos} Photos / {item.views} Views
-        </div>
+                  <div className="text-xs uppercase tracking-widest text-[#888888] mb-5">
+                    <span>{item.photos || portfolioSingleShots.length} Photos</span> / <span>{item.views || 112} Views</span>
+                  </div>
 
-        <p className="text-sm text-gray-300 leading-relaxed">
-          A short project note goes here — mood, location, and what the shoot was trying to capture.
-          Swap this placeholder for the real story.
-        </p>
+                  {/* Author section */}
+                  <div className="flex items-center gap-3 mb-6 pb-6 border-b border-neutral-800">
+                    <div className="w-9 h-9 rounded-full overflow-hidden border border-white/20 shrink-0 bg-neutral-800">
+                      <img
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop"
+                        alt={item.author || "John Smith"}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <span className="text-xs text-[#999999] uppercase tracking-wider">
+                      - Author: {item.author || "John Smith"}
+                    </span>
+                  </div>
 
-        <dl className="space-y-3 text-sm pt-4 border-t border-white/10">
-          <div>
-            <dt className="text-xs uppercase tracking-wide2 text-gray-500">Client</dt>
-            <dd className="text-gray-300">{item.client}</dd>
-          </div>
+                  {/* Description */}
+                  <div className="album-description text-[13px] text-[#999999] leading-relaxed mb-6">
+                    <p className="mb-3">
+                      Suspendisse metus urna, faucibus nec ex et, suscipit blandit turpis. Suspendisse maximus sodales sem aliquet vehicula.
+                    </p>
 
-          {item.website && (
-            <div>
-              <dt className="text-xs uppercase tracking-wide2 text-gray-500">Website</dt>
+                    {isExpanded && (
+                      <p className="animate-fadeIn">
+                        Praesent ultricies interdum augue sit amet tempor. Maecenas at ultricies arcu. Sed lacinia vulputate nulla, at sollicitudin.
+                      </p>
+                    )}
 
-              <dd>
-                <a
-                  href={`https://${item.website}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-300 hover:text-white underline"
-                >
-                  {item.website}
-                </a>
-              </dd>
-            </div>
-          )}
+                    <button
+                      type="button"
+                      onClick={() => setIsExpanded(!isExpanded)}
+                      className="mt-3 text-xs uppercase tracking-wider text-amber-500 hover:text-white inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      {isExpanded ? (
+                        <>
+                          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+                          </svg>
+                          <span>Less</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                          </svg>
+                          <span>More</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
 
-          <div>
-            <dt className="text-xs uppercase tracking-wide2 text-gray-500">Category</dt>
+                  {/* Attributes list */}
+                  <div className="portfolio-atr pt-6 border-t border-neutral-800 space-y-4">
+                    <div>
+                      <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-0.5">Client:</h4>
+                      <span className="text-[13px] text-white">{item.client || "Sirabella´s Photography"}</span>
+                    </div>
 
-            <dd className="text-gray-300">{item.categories.join(', ')}</dd>
-          </div>
-        </dl>
+                    {item.website && (
+                      <div>
+                        <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-0.5">Website:</h4>
+                        <a
+                          href={`https://${item.website}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-[13px] text-amber-500 hover:text-white underline transition-colors"
+                        >
+                          {item.website}
+                        </a>
+                      </div>
+                    )}
 
-        <a
-          href="/portfolio"
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-wide2 text-gray-400 hover:text-white pt-4"
-        >
-          &larr; Back to list
-        </a>
-      </aside>
+                    <div>
+                      <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-0.5">Category:</h4>
+                      <span className="text-[13px] text-white">
+                        {item.categories ? item.categories.join(', ') : 'models, portraits'}
+                      </span>
+                    </div>
 
-      <div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {shots.map((shot, i) => (
-            <div key={i} className="relative aspect-square bg-neutral-800 overflow-hidden">
-              <button
-                type="button"
-                onClick={() => setActive(i)}
-                className="group absolute inset-0 w-full h-full text-left"
-                aria-label={`View ${shot.title}`}
-              >
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100">
-                  <h3 className="text-sm text-white">{shot.title}</h3>
-
-                  <p className="text-xs text-gray-300">#{shot.category}</p>
+                    <div>
+                      <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-2">Share:</h4>
+                      <div className="flex items-center gap-3 text-[#888888]">
+                        <a href="#0" title="Share to Facebook" className="hover:text-white transition-colors">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                          </svg>
+                        </a>
+                        <a href="#0" title="Share to Twitter" className="hover:text-white transition-colors">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z" />
+                          </svg>
+                        </a>
+                        <a href="#0" title="Share to Pinterest" className="hover:text-white transition-colors">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+                          </svg>
+                        </a>
+                        <a href="#0" title="Share to Instagram" className="hover:text-white transition-colors">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </button>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => toggleFavorite(i)}
-                className="absolute top-2 right-2 z-10 flex items-center gap-1 text-xs px-2 py-1 bg-black/50 rounded"
-                aria-label={favorited.has(i) ? 'Remove from favorites' : 'Add to favorites'}
-              >
-                <span className={favorited.has(i) ? 'text-red-400' : 'text-white'}>♥</span>
+              {/* Right Column: Top nav & Image Gallery */}
+              <div className="col-right md:col-span-8 lg:col-span-9 font-mono">
+                {/* Top Gallery Navigation */}
+                <div className="gallery-top-content border-b border-neutral-800/80 pb-4 mb-8">
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href="/portfolio"
+                      className="back-to-list text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-2 transition-colors"
+                    >
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M4 6h4v4H4zm0 7h4v4H4zm0 7h4v4H4zm7-14h10v4H11zm0 7h10v4H11zm0 7h10v4H11z" />
+                      </svg>
+                      <span>Back to list</span>
+                    </Link>
 
-                {shot.favorites + (favorited.has(i) ? 1 : 0)}
-              </button>
+                    <div className="flex items-center gap-5">
+                      <Link
+                        href={`/portfolio/${prevId}`}
+                        className="pn-link portf-prev text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
+                        title="Previous work"
+                      >
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                        </svg>
+                        <span>Prev</span>
+                      </Link>
+
+                      <Link
+                        href={`/portfolio/${nextId}`}
+                        className="pn-link portf-next text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
+                        title="Next work"
+                      >
+                        <span>Next</span>
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Vertical Image Stack matching portfolio-single-4.html */}
+                <div id="gallery" className="space-y-8 md:space-y-10">
+                  {portfolioSingleShots.map((shot, idx) => (
+                    <div
+                      key={shot.id}
+                      className="album-single-item group relative w-full overflow-hidden rounded-[4px] bg-[#181818] border border-neutral-800/80 shadow-2xl"
+                    >
+                      {/* Landscape Image aspect-ratio */}
+                      <img
+                        src={shot.imageUrl}
+                        alt={shot.title}
+                        className="asi-img w-full aspect-[16/10] object-cover rounded-[4px] transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+
+                      {/* Hover Cover Inset Dark Box overlay matching Agatha hover-center hover-boxed screenshot */}
+                      <div
+                        onClick={() => setLightboxIndex(idx)}
+                        className="asi-cover absolute inset-[7%] md:inset-[10%] bg-[#121212]/94 border border-white/5 rounded-[3px] flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-95 group-hover:scale-100 cursor-pointer z-10"
+                      >
+                        {/* Top-Right Favorite Heart Button inside the dark boxed overlay */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleFavorite(idx);
+                          }}
+                          className="favorite-btn absolute top-3 right-4 z-20 flex items-center gap-1.5 text-xs font-mono text-white/90 hover:text-red-400 transition-colors cursor-pointer"
+                          aria-label={favorited.has(idx) ? 'Remove from favorites' : 'Add to favorites'}
+                        >
+                          <svg
+                            className={`w-3.5 h-3.5 ${favorited.has(idx) ? 'fill-red-500 text-red-500' : 'fill-white text-white'}`}
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                          </svg>
+                          <span className="fav-count text-[11px] font-medium">
+                            {shot.favorites + (favorited.has(idx) ? 1 : 0)}
+                          </span>
+                        </button>
+
+                        {/* Centered Title & Hashtag Category */}
+                        <div className="asi-info my-auto">
+                          <h2 className="asi-title text-sm sm:text-base md:text-lg uppercase text-white font-bold tracking-[3px] mb-1.5">
+                            {shot.title}
+                          </h2>
+                          <h5 className="asi-sub-title text-xs uppercase text-[#888888] tracking-[2px]">
+                            #{shot.category}
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+
+                {/* Bottom Gallery Navigation */}
+                <div className="gallery-top-content border-t border-neutral-800/80 pt-6 mt-8">
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href="/portfolio"
+                      className="back-to-list text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-2 transition-colors"
+                    >
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M4 6h4v4H4zm0 7h4v4H4zm0 7h4v4H4zm7-14h10v4H11zm0 7h10v4H11zm0 7h10v4H11z" />
+                      </svg>
+                      <span>Back to list</span>
+                    </Link>
+
+                    <div className="flex items-center gap-5">
+                      <Link
+                        href={`/portfolio/${prevId}`}
+                        className="pn-link portf-prev text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
+                        title="Previous work"
+                      >
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                        </svg>
+                        <span>Prev</span>
+                      </Link>
+
+                      <Link
+                        href={`/portfolio/${nextId}`}
+                        className="pn-link portf-next text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
+                        title="Next work"
+                      >
+                        <span>Next</span>
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
-      {active !== null && (
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && currentShot && (
         <div
-          onClick={() => setActive(null)}
-          className="fixed inset-0 z-50 bg-black/90 flex flex-col items-center justify-center p-6 cursor-zoom-out"
+          onClick={() => setLightboxIndex(null)}
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10"
         >
-          <div
-            className="w-full max-w-2xl aspect-[4/3] bg-neutral-800"
-            onClick={(e) => e.stopPropagation()}
-          />
-
-          <p className="text-sm text-gray-300 mt-4">{shots[active].title}</p>
-
+          {/* Close button */}
           <button
             type="button"
-            onClick={() => setActive(null)}
-            aria-label="Close"
-            className="absolute top-6 right-6 text-white text-2xl leading-none"
+            onClick={() => setLightboxIndex(null)}
+            className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl font-light p-2 transition-colors cursor-pointer z-50"
+            aria-label="Close Lightbox"
           >
             &times;
           </button>
+
+          {/* Prev button */}
+          <button
+            type="button"
+            onClick={handlePrevShot}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all cursor-pointer z-50"
+            aria-label="Previous image"
+          >
+            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+
+          {/* Next button */}
+          <button
+            type="button"
+            onClick={handleNextShot}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all cursor-pointer z-50"
+            aria-label="Next image"
+          >
+            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </button>
+
+          {/* Image preview */}
+          <div className="relative max-w-5xl max-h-[80vh] w-full flex items-center justify-center overflow-hidden rounded-[6px]">
+            <img
+              src={currentShot.imageUrl}
+              alt={currentShot.title}
+              className="max-w-full max-h-[80vh] object-contain rounded-[6px]"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+
+          {/* Caption */}
+          <div className="text-center font-mono mt-4 text-white">
+            <h3 className="text-base uppercase font-medium tracking-wide">{currentShot.title}</h3>
+            <p className="text-xs text-[#999999] uppercase tracking-wider mt-1">#{currentShot.category}</p>
+          </div>
         </div>
       )}
     </section>
   );
-};
+}
 
-export default PortfolioSingle;
