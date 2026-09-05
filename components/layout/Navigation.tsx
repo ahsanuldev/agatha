@@ -1,14 +1,14 @@
 'use client';
 
 import DropdownMenu from './Dropdown';
-import { navigation } from './navData';
+import { navItems, NavItem } from './navData';
 
 export default function Navigation() {
   return (
     <nav className="navbar navbar-default">
       <div className="navbar-inner">
         <ul className="nav navbar-nav navbar-right">
-          {navigation.map((item) => (
+          {navItems.map((item: NavItem) => (
             <DropdownMenu key={item.label} item={item} />
           ))}
         </ul>
