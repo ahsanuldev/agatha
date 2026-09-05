@@ -28,11 +28,12 @@ const Header: React.FC<HeaderProps> = ({ onMenuTrigger }) => {
       <div className="header-inner w-full px-[15px] md:px-[45px] flex items-center justify-between h-16">
         {/* Logo */}
         <div id="logo" className="flex items-center">
-          <Link
-            href="/"
-            className="text-white text-[12px] font-normal uppercase tracking-[6px] hover:opacity-80 transition-opacity"
-          >
-            AGATHA
+          <Link href="/" className="block py-2">
+            <img
+              src="/logo-light.png"
+              alt="Agatha"
+              className="max-h-[38px] w-auto block"
+            />
           </Link>
         </div>
 
@@ -120,21 +121,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuTrigger }) => {
             </ul>
           </nav>
 
-          {/* Hamburger Menu Icon */}
-          <div className="flex items-center">
-            <button
-              onClick={() => {
-                if (onMenuTrigger) onMenuTrigger();
-                setMobileMenuOpen((prev) => !prev);
-              }}
-              className="text-gray-400 hover:text-white p-1 flex items-center justify-center transition-colors focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+
         </div>
       </div>
 
