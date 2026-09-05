@@ -11,56 +11,13 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  {
-    label: 'Home',
-    href: '/',
-    children: [
-      { label: 'Single Image', href: '/' },
-      { label: 'Slideshow', href: '/slideshow' },
-      { label: 'Video Background', href: '/video-background' },
-      { label: 'Photo Wall', href: '/photo-wall' },
-    ],
-  },
-  {
-    label: 'Gallery',
-    href: '/portfolio',
-    children: [
-      { label: 'Carousel', href: '/portfolio' },
-      { label: 'Carousel Full', href: '/portfolio/carousel-full' },
-      { label: 'Slideshow', href: '/portfolio/slideshow' },
-      { label: 'Grid 3 Columns', href: '/portfolio/grid-3col' },
-      { label: 'Masonry 3 Columns', href: '/portfolio/masonry-3col' },
-    ],
-  },
-  {
-    label: 'Portfolio',
-    href: '/portfolio/all',
-    children: [
-      { label: 'All Work', href: '/portfolio/all' },
-      { label: 'Fashion', href: '/portfolio/fashion' },
-      { label: 'Portraits', href: '/portfolio/portraits' },
-      { label: 'Outdoor', href: '/portfolio/outdoor' },
-      { label: 'Black & White', href: '/portfolio/black-and-white' },
-    ],
-  },
-  {
-    label: 'Blog',
-    href: '/blog',
-    children: [
-      { label: 'All Articles', href: '/blog' },
-      { label: 'Single Post', href: '/blog/the-truth-about-photography' },
-    ],
-  },
-  {
-    label: 'Pages',
-    href: '#',
-    children: [
-      { label: 'About Me', href: '/about' },
-      { label: 'FAQ', href: '/faq' },
-      { label: 'Login/Register', href: '/login' },
-      { label: 'Contact', href: '/contact' },
-    ],
-  },
+  { label: 'Home', href: '/' },
+  { label: 'Portfolio', href: '/portfolio/all' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'About Me', href: '/about' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Login/Register', href: '/login' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const offCanvasLinks: NavLink[] = [
