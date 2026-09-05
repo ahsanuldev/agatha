@@ -19,13 +19,11 @@ const answer =
     "A placeholder answer goes here — swap this copy for the real response to each question once you have it.";
 
 export default function FaqAccordion() {
-    const [open, setOpen] = useState < number | null > (0);
+  const [open, setOpen] = useState<number | null>(0);
 
-const Faq = () => {
   return (
-    <>(
-        <div>
-      <h2 className="text-sm uppercase tracking-wide2 text-gray-400 mb-6">General Help</h2>
+    <div>
+      <h2 className="text-sm uppercase tracking-wide text-gray-400 mb-6">General Help</h2>
       <div className="divide-y divide-white/10 border-t border-b border-white/10">
         {faqs.map((q, i) => (
           <div key={i}>
@@ -49,8 +47,5 @@ const Faq = () => {
         ))}
       </div>
     </div>
-    )</>
-  )
+  );
 }
-
-export default Faq
