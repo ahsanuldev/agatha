@@ -1,6 +1,4 @@
 import { notFound } from 'next/navigation';
-import PageShell from '@/components/page/pageShell/page';
-import PageHeader from '@/components/page/pageHeader/page';
 import PortfolioSingle from '@/components/portfolio/PortfolioSingle';
 import { portfolioItems } from '@/components/portfolio/PortfolioData';
 
@@ -23,20 +21,8 @@ const PortfolioSinglePage = ({
     notFound();
   }
 
-  return (
-    <PageShell>
-      <PageHeader
-        title={item.title}
-        crumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Portfolio', href: '/portfolio' },
-          { label: item.title },
-        ]}
-      />
-
-      <PortfolioSingle item={item} />
-    </PageShell>
-  );
+  return <PortfolioSingle item={item} />;
 };
 
 export default PortfolioSinglePage;
+
