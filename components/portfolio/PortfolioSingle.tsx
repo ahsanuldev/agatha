@@ -46,9 +46,9 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
 
   return (
     <section id="content-section" className="portfolio-single portfolio-single-4 -mt-[80px] md:-mt-[100px] relative z-10 w-full pb-16">
-      <div className="w-full px-[15px] md:px-[45px]">
-        <div className="content-wrap bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl">
-          <div className="max-w-[1200px] mx-auto">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="content-wrap max-w-[1360px] mx-auto bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl">
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
               
               {/* Left Column: Metadata & Details */}
@@ -91,7 +91,7 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                     <button
                       type="button"
                       onClick={() => setIsExpanded(!isExpanded)}
-                      className="mt-3 text-xs uppercase tracking-wider text-amber-500 hover:text-white inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="mt-3 text-xs uppercase tracking-wider text-neutral-400 hover:text-white inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                     >
                       {isExpanded ? (
                         <>
