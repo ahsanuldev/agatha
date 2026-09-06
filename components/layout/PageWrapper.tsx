@@ -25,18 +25,19 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#070707]">
+      {/* Top Header - Fixed to browser viewport at all times */}
+      <Header isMenuOpen={isMenuOpen} onMenuToggle={toggleMenu} />
+
       {/* Main Body Layout Container - shifts to the left with drop shadow over revealing menu */}
       <div
         id="body-content"
-        className={`min-h-screen w-full flex flex-col justify-between relative z-30 transition-all duration-700 [transition-timing-function:cubic-bezier(0.25,1,0.5,1)] ${
+        className={`min-h-screen w-full flex flex-col justify-between relative z-30 transition-transform duration-700 [transition-timing-function:cubic-bezier(0.25,1,0.5,1)] ${
           isMenuOpen
             ? '-translate-x-[280px] sm:-translate-x-[320px] shadow-[-35px_0_60px_rgba(0,0,0,0.9)] cursor-pointer'
-            : 'translate-x-0 shadow-none'
+            : ''
         }`}
         onClick={isMenuOpen ? closeMenu : undefined}
       >
-        <Header isMenuOpen={isMenuOpen} onMenuToggle={toggleMenu} />
-
         <main className="flex-1 flex flex-col pt-16 relative">
           {children}
         </main>

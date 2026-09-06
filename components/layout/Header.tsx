@@ -24,7 +24,9 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen = false, onMenuToggle }) => 
   return (
     <header
       id="header"
-      className="fixed top-0 inset-x-0 z-40 bg-[#0b0b0b]/95 backdrop-blur-md border-b border-neutral-800/80 transition-all duration-300 font-mono"
+      className={`fixed top-0 inset-x-0 z-40 bg-[#0b0b0b]/95 backdrop-blur-md border-b border-neutral-800/80 transition-transform duration-700 [transition-timing-function:cubic-bezier(0.25,1,0.5,1)] font-mono ${
+        isMenuOpen ? '-translate-x-[280px] sm:-translate-x-[320px]' : ''
+      }`}
     >
       <div className="header-inner w-full px-4 sm:px-8 md:px-[45px] flex items-center justify-between h-16">
         {/* Logo */}
