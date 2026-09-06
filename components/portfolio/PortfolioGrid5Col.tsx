@@ -158,8 +158,8 @@ export default function PortfolioGrid5Col() {
             </div>
           </div>
 
-          {/* 4 Column Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+          {/* Grid Layout: 2 Columns on Mobile, 4 Columns on Desktop */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-3.5 gap-y-6 sm:gap-x-6 sm:gap-y-10">
             {displayedAlbums.map((album) => (
               <div key={album.id} className="w-full">
                 <div className="group relative w-full">

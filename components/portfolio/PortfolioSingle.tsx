@@ -212,7 +212,7 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                 </div>
 
                 {/* Masonry Image Grid matching Agatha template portfolio-single-5.html */}
-                <div id="gallery" className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 font-mono">
+                <div id="gallery" className="columns-2 md:columns-3 lg:columns-4 gap-3.5 space-y-3.5 sm:gap-4 sm:space-y-4 font-mono">
                   {portfolioSingleShots.map((shot, idx) => (
                     <div
                       key={shot.id}
