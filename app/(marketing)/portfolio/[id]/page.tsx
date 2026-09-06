@@ -26,7 +26,7 @@ export default function PortfolioSinglePage({
     <main className="min-h-screen bg-[#131313] text-white">
       <PageHeader
         title={item.title ? item.title.toUpperCase() : "PORTFOLIO SINGLE V.4"}
-        bgImage="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop"
+        bgImage="https://images.unsplash.com/photo-1511468102400-883d6ea28755?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Portfolio', href: '/portfolio' },

@@ -48,7 +48,7 @@ export default function PageHeader({
   title,
   subtitle,
   breadcrumbs,
-  bgImage = 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop',
+  bgImage = 'https://images.unsplash.com/photo-1511468102400-883d6ea28755?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   overlayClassName = 'bg-black/65',
   className = '',
   children,
@@ -101,9 +101,9 @@ export default function PageHeader({
         aria-hidden="true"
       />
 
-      {/* Bottom Gradient Blend Masking (Fades image seamlessly into page background #111111) */}
+      {/* Bottom Gradient Blend Masking (Fades image seamlessly into page background #131313) */}
       <div
-        className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-[#111111]/50 to-[#111111] pointer-events-none z-0"
+        className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-[#131313]/50 to-[#131313] pointer-events-none z-0"
         aria-hidden="true"
       />
 
