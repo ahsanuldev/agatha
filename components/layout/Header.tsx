@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { navItems, NavItem } from './navData';
+import logoLight from '@/public/logo-light.png';
 
 interface HeaderProps {
   isMenuOpen?: boolean;
@@ -29,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen = false, onMenuToggle }) => 
         <div id="logo" className="flex items-center">
           <Link href="/" className="block py-2">
             <img
-              src="logo-light.png"
+              src={logoLight.src || "/logo-light.png"}
               alt="Agatha Photography"
               className="max-h-[38px] w-auto block"
             />
