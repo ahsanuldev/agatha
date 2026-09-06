@@ -161,20 +161,6 @@ const ContactForm = () => {
           </div>
         </form>
       )}
-
-      {/* Google Maps Embed Container matching user screenshot */}
-      <div className="mt-10 pt-2">
-        <div className="w-full bg-[#1c1c1c] border border-[#333333] rounded-[16px] p-3 sm:p-4 overflow-hidden shadow-xl">
-          <iframe
-            title="Google Maps Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086487192317!2d-122.41941552342939!3d37.7749295150937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter%20HQ!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-            className="w-full h-[280px] sm:h-[350px] md:h-[400px] rounded-[10px] border-0 filter contrast-125 brightness-90 grayscale-[30%]"
-            allowFullScreen={false}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </div>
     </div>
   );
 };
