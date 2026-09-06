@@ -124,25 +124,27 @@ export default function PageHeader({
         {/* Breadcrumb Navigation */}
         {itemsToRender && itemsToRender.length > 0 && (
           <nav aria-label="Breadcrumb" className="mt-1">
-            <ol className="breadcrumb flex items-center justify-center space-x-2 text-[11px] uppercase tracking-[2px] font-light text-neutral-400">
+            <ol className="breadcrumb flex items-center justify-center text-[11px] uppercase tracking-normal font-light text-neutral-400">
               {itemsToRender.map((item, idx) => {
                 const isLast = idx === itemsToRender.length - 1;
                 return (
-                  <React.Fragment key={idx}>
-                    {idx > 0 && <span className="text-neutral-500 mx-1">/</span>}
-                    <li>
-                      {item.href && !isLast ? (
-                        <Link
-                          href={item.href}
-                          className="hover:text-white transition-colors duration-200"
-                        >
-                          {item.label}
-                        </Link>
-                      ) : (
-                        <span className="text-white font-normal">{item.label}</span>
-                      )}
-                    </li>
-                  </React.Fragment>
+                  <li key={idx} className="flex items-center">
+                    {idx > 0 && (
+                      <span className="inline-block px-2.5 text-neutral-500 font-normal select-none" aria-hidden="true">
+                        /
+                      </span>
+                    )}
+                    {item.href && !isLast ? (
+                      <Link
+                        href={item.href}
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span className="text-white font-normal">{item.label}</span>
+                    )}
+                  </li>
                 );
               })}
             </ol>

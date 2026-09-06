@@ -58,8 +58,10 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                     About Project:
                   </h1>
 
-                  <div className="text-xs uppercase tracking-widest text-[#888888] mb-5">
-                    <span>{item.photos || portfolioSingleShots.length} Photos</span> / <span>{item.views || 112} Views</span>
+                  <div className="text-xs uppercase tracking-widest text-[#888888] mb-5 flex items-center">
+                    <span>{item.photos || portfolioSingleShots.length} Photos</span>
+                    <span className="px-2.5 text-neutral-600">/</span>
+                    <span>{item.views || 112} Views</span>
                   </div>
 
                   {/* Author section */}
