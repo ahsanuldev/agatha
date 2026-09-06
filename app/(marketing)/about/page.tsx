@@ -58,7 +58,7 @@ export default function AboutMePage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#111111] text-white">
+    <main className="min-h-screen bg-[#131313] text-white">
       {/* Page Header matching Agatha alter-heading style */}
       <PageHeader
         title="ABOUT ME"

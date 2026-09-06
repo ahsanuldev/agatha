@@ -50,19 +50,19 @@ export default function BlogSidebar() {
       <div className="sidebar-widget sidebar-search no-margin-top mb-8">
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="relative flex items-center bg-[#161616] border border-neutral-800 rounded-full px-4 py-1.5 focus-within:border-neutral-600 transition-all"
+          className="relative flex items-center bg-[#1c1c1c] border border-[#333333] rounded-full px-4 py-1.5 focus-within:border-[#987f28] transition-all"
         >
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search"
-            className="w-full bg-transparent px-2 py-1 text-sm text-neutral-200 placeholder-neutral-500 focus:outline-none font-mono"
+            className="w-full bg-transparent px-2 py-1 text-sm text-white placeholder-[#888888] focus:outline-none font-mono"
           />
           <div className="h-4 w-[1px] bg-neutral-800/80 mx-2 flex-shrink-0" />
           <button
             type="submit"
-            className="p-1 text-neutral-400 hover:text-white transition-colors flex-shrink-0"
+            className="p-1 text-[#aaaaaa] hover:text-white transition-colors flex-shrink-0 cursor-pointer"
             aria-label="Search"
           >
             <svg className="w-4 h-4 fill-none stroke-current stroke-[2.2]" viewBox="0 0 24 24">
@@ -75,22 +75,22 @@ export default function BlogSidebar() {
 
       {/* Categories Widget */}
       <div className="sidebar-widget sidebar-categories">
-        <h3 className="sidebar-heading text-xs uppercase text-white font-medium tracking-wider mb-2">
-          Blog Categories
+        <h3 className="text-base md:text-lg font-mono uppercase text-[#e0e0e0] font-light tracking-normal mb-1">
+          BLOG CATEGORIES
         </h3>
-        <div className="hr-short w-6 h-[4px] bg-neutral-700 rounded-full mb-6" />
-        <ul className="space-y-0 text-xs">
+        <div className="text-2xl md:text-3xl font-mono text-[#888888] mb-4 select-none leading-none">~</div>
+        <ul className="space-y-0 font-mono">
           {blogCategories.map((c, idx) => (
             <li key={c.label}>
               <a
                 href="#0"
                 onClick={(e) => e.preventDefault()}
-                className={`flex items-center justify-between text-[#999999] hover:text-white transition-colors py-2.5 ${
+                className={`flex items-center justify-between text-[13px] text-[#cccccc] hover:text-white uppercase font-mono tracking-normal font-normal transition-colors py-2.5 ${
                   idx !== 0 ? 'border-t border-dotted border-neutral-800' : ''
                 }`}
               >
                 <span>#{c.label}</span>
-                <span className="w-6 h-6 rounded-full bg-[rgba(132,132,132,0.14)] text-[#cccccc] flex items-center justify-center text-[11px]">
+                <span className="w-6 h-6 rounded-full bg-[rgba(132,132,132,0.18)] text-[#dddddd] flex items-center justify-center text-[11px] font-mono tracking-normal font-normal">
                   {c.count}
                 </span>
               </a>
@@ -101,10 +101,10 @@ export default function BlogSidebar() {
 
       {/* Recent Posts Widget */}
       <div className="sidebar-widget sidebar-post-list">
-        <h3 className="sidebar-heading text-xs uppercase text-white font-medium tracking-wider mb-2">
-          Recent Posts
+        <h3 className="text-base md:text-lg font-mono uppercase text-[#e0e0e0] font-light tracking-normal mb-1">
+          RECENT POSTS
         </h3>
-        <div className="hr-short w-6 h-[4px] bg-neutral-700 rounded-full mb-6" />
+        <div className="text-2xl md:text-3xl font-mono text-[#888888] mb-4 select-none leading-none">~</div>
         <ul className="space-y-5">
           {recent.map((p, idx) => (
             <li
@@ -139,10 +139,10 @@ export default function BlogSidebar() {
 
       {/* Recent Comments Widget */}
       <div className="sidebar-widget sidebar-comments-list">
-        <h3 className="sidebar-heading text-xs uppercase text-white font-medium tracking-wider mb-2">
-          Recent Comments
+        <h3 className="text-base md:text-lg font-mono uppercase text-[#e0e0e0] font-light tracking-normal mb-1">
+          RECENT COMMENTS
         </h3>
-        <div className="hr-short w-6 h-[4px] bg-neutral-700 rounded-full mb-6" />
+        <div className="text-2xl md:text-3xl font-mono text-[#888888] mb-4 select-none leading-none">~</div>
         <ul className="space-y-5">
           {recentCommenters.map((c, i) => (
             <li
@@ -169,10 +169,10 @@ export default function BlogSidebar() {
 
       {/* Popular Tags Widget */}
       <div className="sidebar-widget sidebar-tags">
-        <h3 className="sidebar-heading text-xs uppercase text-white font-medium tracking-wider mb-2">
-          Popular Tags
+        <h3 className="text-base md:text-lg font-mono uppercase text-[#e0e0e0] font-light tracking-normal mb-1">
+          POPULAR TAGS
         </h3>
-        <div className="hr-short w-6 h-[4px] bg-neutral-700 rounded-full mb-6" />
+        <div className="text-2xl md:text-3xl font-mono text-[#888888] mb-4 select-none leading-none">~</div>
         <div className="flex flex-wrap gap-2">
           {blogTags.map((t) => (
             <a
@@ -189,10 +189,10 @@ export default function BlogSidebar() {
 
       {/* Photo Stream Widget */}
       <div className="sidebar-widget sidebar-photo-stream">
-        <h3 className="sidebar-heading text-xs uppercase text-white font-medium tracking-wider mb-2">
-          Photo Stream
+        <h3 className="text-base md:text-lg font-mono uppercase text-[#e0e0e0] font-light tracking-normal mb-1">
+          PHOTO STREAM
         </h3>
-        <div className="hr-short w-6 h-[4px] bg-neutral-700 rounded-full mb-6" />
+        <div className="text-2xl md:text-3xl font-mono text-[#888888] mb-4 select-none leading-none">~</div>
         <div className="grid grid-cols-4 gap-2">
           {photoStreamImages.map((src, i) => (
             <a
@@ -213,10 +213,10 @@ export default function BlogSidebar() {
 
       {/* Subscribe Widget */}
       <div className="sidebar-widget sidebar-subscribe">
-        <h3 className="sidebar-heading text-xs uppercase text-white font-medium tracking-wider mb-2">
-          Subscribe
+        <h3 className="text-base md:text-lg font-mono uppercase text-[#e0e0e0] font-light tracking-normal mb-1">
+          SUBSCRIBE
         </h3>
-        <div className="hr-short w-6 h-[4px] bg-neutral-700 rounded-full mb-4" />
+        <div className="text-2xl md:text-3xl font-mono text-[#888888] mb-4 select-none leading-none">~</div>
         <p className="text-xs text-[#888888] mb-3">Follow our latest news:</p>
         <form
           onSubmit={(e) => e.preventDefault()}
@@ -242,10 +242,10 @@ export default function BlogSidebar() {
 
       {/* Meta Widget */}
       <div className="sidebar-widget sidebar-meta">
-        <h3 className="sidebar-heading text-xs uppercase text-white font-medium tracking-wider mb-2">
-          Meta
+        <h3 className="text-base md:text-lg font-mono uppercase text-[#e0e0e0] font-light tracking-normal mb-1">
+          META
         </h3>
-        <div className="hr-short w-6 h-[4px] bg-neutral-700 rounded-full mb-4" />
+        <div className="text-2xl md:text-3xl font-mono text-[#888888] mb-4 select-none leading-none">~</div>
         <ul className="space-y-2 text-xs text-[#999999]">
           <li>
             <a href="#0" className="hover:text-white transition-colors">

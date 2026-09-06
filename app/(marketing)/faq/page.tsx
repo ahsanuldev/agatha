@@ -84,7 +84,7 @@ export default function FaqPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#111111] text-white">
+    <main className="min-h-screen bg-[#131313] text-white">
       {/* Page Header matching Agatha alter-heading style */}
       <PageHeader
         title="FAQ"
@@ -98,7 +98,7 @@ export default function FaqPage() {
       {/* Content Section */}
       <section id="content-section" className="-mt-[80px] md:-mt-[100px] relative z-10 w-full pb-16">
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-[1320px] mx-auto bg-[#111111] border border-neutral-800/80 rounded-[6px] p-6 md:p-[45px] shadow-2xl">
+          <div className="max-w-[1320px] mx-auto bg-[#0b0b0b] border border-neutral-800/80 rounded-[6px] p-6 md:p-[45px] shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 font-mono">
               
               {/* Left Column: Accordions matching user screenshot media_1788653130860.png */}

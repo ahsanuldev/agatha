@@ -12,10 +12,10 @@ const LoginRegisterTabs = () => {
         <button
           type="button"
           onClick={() => setTab('login')}
-          className={`flex-1 py-3.5 text-xs uppercase font-mono tracking-[2px] cursor-pointer text-center ${
+          className={`flex-1 py-3.5 text-xs uppercase font-mono tracking-[2px] cursor-pointer text-center transition-colors ${
             tab === 'login'
-              ? 'bg-[#111111] text-white border border-[#444444] border-b-transparent relative z-10 font-medium'
-              : 'bg-[#1c1c1c] text-[#a0a0a0] hover:text-white border border-[#2a2a2a] border-b-[#444444]'
+              ? 'bg-[#0b0b0b] text-white border border-[#333333] border-b-[#0b0b0b] relative z-10 font-medium'
+              : 'bg-[#181818] text-[#a0a0a0] hover:text-white border border-[#262626] border-b-[#333333]'
           }`}
         >
           LOGIN
@@ -23,10 +23,10 @@ const LoginRegisterTabs = () => {
         <button
           type="button"
           onClick={() => setTab('register')}
-          className={`flex-1 py-3.5 text-xs uppercase font-mono tracking-[2px] cursor-pointer text-center -ml-[1px] ${
+          className={`flex-1 py-3.5 text-xs uppercase font-mono tracking-[2px] cursor-pointer text-center -ml-[1px] transition-colors ${
             tab === 'register'
-              ? 'bg-[#111111] text-white border border-[#444444] border-b-transparent relative z-10 font-medium'
-              : 'bg-[#1c1c1c] text-[#a0a0a0] hover:text-white border border-[#2a2a2a] border-b-[#444444]'
+              ? 'bg-[#0b0b0b] text-white border border-[#333333] border-b-[#0b0b0b] relative z-10 font-medium'
+              : 'bg-[#181818] text-[#a0a0a0] hover:text-white border border-[#262626] border-b-[#333333]'
           }`}
         >
           REGISTER

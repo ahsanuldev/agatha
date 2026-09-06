@@ -23,7 +23,7 @@ export default function BlogSinglePage({
   }
 
   return (
-    <main className="min-h-screen bg-[#111111] text-white">
+    <main className="min-h-screen bg-[#131313] text-white">
       <PageHeader
         title={post.title.toUpperCase()}
         breadcrumbs={[

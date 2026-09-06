@@ -167,11 +167,11 @@ body {
 }
 
 .agatha-card-container {
-  @apply w-full bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl;
+  @apply w-full bg-[#0b0b0b] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl;
 }
 
 .agatha-card-container-compact {
-  @apply max-w-[1320px] mx-auto bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl;
+  @apply max-w-[1320px] mx-auto bg-[#0b0b0b] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl;
 }
 
 .agatha-grid-layout {

@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         />
       </head>
-      <body id="body" className="bg-[#111111] text-[#EEE] antialiased">
+      <body id="body" className="bg-[#131313] text-[#EEE] antialiased">
         {children}
       </body>
     </html>

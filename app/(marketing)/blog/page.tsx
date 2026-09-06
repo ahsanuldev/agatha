@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-[#111111] text-white">
+    <main className="min-h-screen bg-[#131313] text-white">
       {/* Page Header matching Agatha template blog-list-sidebar-left.html */}
       <PageHeader
         title="ARTICLES"

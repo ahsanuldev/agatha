@@ -23,7 +23,7 @@ export default function PortfolioSinglePage({
   }
 
   return (
-    <main className="min-h-screen bg-[#111111] text-white">
+    <main className="min-h-screen bg-[#131313] text-white">
       <PageHeader
         title={item.title ? item.title.toUpperCase() : "PORTFOLIO SINGLE V.4"}
         bgImage="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop"
