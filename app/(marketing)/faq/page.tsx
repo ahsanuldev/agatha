@@ -236,7 +236,7 @@ export default function FaqPage() {
                     </ul>
                   </div>
 
-                  {/* Ask a Question Gold Button matching screenshot */}
+                  {/*  a Question Gold Button matching screenshot */}
                   <div className="pt-1">
                     <Link href="/contact">
                       <Button
