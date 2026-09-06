@@ -45,7 +45,7 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
   };
 
   return (
-    <section id="content-section" className="agatha-page-section portfolio-single portfolio-single-4">
+    <section id="content-section" className="agatha-page-section portfolio-single portfolio-single-5">
       <div className="agatha-container">
         <div className="agatha-card-container">
           <div>
@@ -54,18 +54,18 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
               {/* Left Column: Metadata & Details */}
               <div className="col-left md:col-span-4 lg:col-span-3 font-mono">
                 <div className="portfolio-info">
-                  <h1 className="text-sm uppercase text-white font-medium tracking-wider mb-1">
+                  <h1 className="text-sm uppercase text-white font-normal tracking-[4px] mb-3">
                     About Project:
                   </h1>
 
-                  <div className="text-xs uppercase tracking-widest text-[#888888] mb-5 flex items-center">
+                  <div className="text-xs uppercase tracking-[2px] text-[#888888] mb-6 flex items-center">
                     <span>{item.photos || portfolioSingleShots.length} Photos</span>
                     <span className="px-2.5 text-neutral-600">/</span>
                     <span>{item.views || 112} Views</span>
                   </div>
 
                   {/* Author section */}
-                  <div className="flex items-center gap-3 mb-6 pb-6 border-b border-neutral-800">
+                  <div className="flex items-center gap-3 mb-6">
                     <div className="w-9 h-9 rounded-full overflow-hidden border border-white/20 shrink-0 bg-neutral-800">
                       <img
                         src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop"
@@ -73,13 +73,13 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <span className="text-xs text-[#999999] uppercase tracking-wider">
+                    <span className="text-xs text-[#999999] uppercase tracking-[2px] font-normal">
                       - Author: {item.author || "John Smith"}
                     </span>
                   </div>
 
                   {/* Description */}
-                  <div className="album-description text-[13px] text-[#999999] leading-relaxed mb-6">
+                  <div className="album-description text-[13px] text-[#999999] leading-relaxed mb-6 pl-4 border-l border-neutral-800/80">
                     <p className="mb-3">
                       Suspendisse metus urna, faucibus nec ex et, suscipit blandit turpis. Suspendisse maximus sodales sem aliquet vehicula.
                     </p>
@@ -93,7 +93,7 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                     <button
                       type="button"
                       onClick={() => setIsExpanded(!isExpanded)}
-                      className="mt-3 text-xs uppercase tracking-wider text-neutral-400 hover:text-white inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="mt-3 text-xs uppercase tracking-[2px] text-[#888888] hover:text-white inline-flex items-center gap-1.5 transition-colors cursor-pointer font-normal"
                     >
                       {isExpanded ? (
                         <>
@@ -113,37 +113,37 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                     </button>
                   </div>
 
-                  {/* Attributes list */}
-                  <div className="portfolio-atr pt-6 border-t border-neutral-800 space-y-4">
-                    <div>
-                      <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-0.5">Client:</h4>
-                      <span className="text-[13px] text-white">{item.client || "Sirabella´s Photography"}</span>
+                  {/* Attributes list with left vertical lines matching Agatha screenshot */}
+                  <div className="portfolio-atr pt-2 space-y-5">
+                    <div className="pl-4 border-l border-neutral-800/80">
+                      <h4 className="text-xs uppercase tracking-[2px] text-[#cccccc] mb-1 font-normal">Client:</h4>
+                      <span className="text-[13px] text-[#999999] font-normal">{item.client || "Sirabella´s Photography"}</span>
                     </div>
 
                     {item.website && (
-                      <div>
-                        <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-0.5">Website:</h4>
+                      <div className="pl-4 border-l border-neutral-800/80">
+                        <h4 className="text-xs uppercase tracking-[2px] text-[#cccccc] mb-1 font-normal">Website:</h4>
                         <a
                           href={`https://${item.website}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-[13px] text-amber-500 hover:text-white underline transition-colors"
+                          className="text-[13px] text-[#999999] hover:text-white underline transition-colors font-normal"
                         >
                           {item.website}
                         </a>
                       </div>
                     )}
 
-                    <div>
-                      <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-0.5">Category:</h4>
-                      <span className="text-[13px] text-white">
+                    <div className="pl-4 border-l border-neutral-800/80">
+                      <h4 className="text-xs uppercase tracking-[2px] text-[#cccccc] mb-1 font-normal">Category:</h4>
+                      <span className="text-[13px] text-[#999999] font-normal">
                         {item.categories ? item.categories.join(', ') : 'models, portraits'}
                       </span>
                     </div>
 
-                    <div>
-                      <h4 className="text-[11px] uppercase tracking-widest text-[#888888] mb-2">Share:</h4>
-                      <div className="flex items-center gap-3 text-[#888888]">
+                    <div className="pl-4 border-l border-neutral-800/80">
+                      <h4 className="text-xs uppercase tracking-[2px] text-[#cccccc] mb-2 font-normal">Share:</h4>
+                      <div className="flex items-center gap-3.5 text-[#999999]">
                         <a href="#0" title="Share to Facebook" className="hover:text-white transition-colors">
                           <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -177,7 +177,7 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                   <div className="flex items-center justify-between">
                     <Link
                       href="/portfolio"
-                      className="back-to-list text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-2 transition-colors"
+                      className="back-to-list text-xs uppercase tracking-normal text-[#bbbbbb] hover:text-white inline-flex items-center gap-2 transition-colors"
                     >
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                         <path d="M4 6h4v4H4zm0 7h4v4H4zm0 7h4v4H4zm7-14h10v4H11zm0 7h10v4H11zm0 7h10v4H11z" />
@@ -188,7 +188,7 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                     <div className="flex items-center gap-5">
                       <Link
                         href={`/portfolio/${prevId}`}
-                        className="pn-link portf-prev text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
+                        className="pn-link portf-prev text-xs uppercase tracking-normal text-[#bbbbbb] hover:text-white inline-flex items-center gap-1 transition-colors"
                         title="Previous work"
                       >
                         <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -199,7 +199,7 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
 
                       <Link
                         href={`/portfolio/${nextId}`}
-                        className="pn-link portf-next text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
+                        className="pn-link portf-next text-xs uppercase tracking-normal text-[#bbbbbb] hover:text-white inline-flex items-center gap-1 transition-colors"
                         title="Next work"
                       >
                         <span>Next</span>
@@ -211,98 +211,58 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
                   </div>
                 </div>
 
-                {/* Vertical Image Stack matching portfolio-single-4.html */}
-                <div id="gallery" className="space-y-8 md:space-y-10">
+                {/* Masonry Image Grid matching Agatha template portfolio-single-5.html */}
+                <div id="gallery" className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 font-mono">
                   {portfolioSingleShots.map((shot, idx) => (
                     <div
                       key={shot.id}
-                      className="album-single-item group relative w-full overflow-hidden rounded-[4px] bg-[#181818] border border-neutral-800/80 shadow-2xl"
+                      className="break-inside-avoid mb-4 album-single-item group relative overflow-hidden rounded-[4px] transition-all duration-300"
                     >
-                      {/* Landscape Image aspect-ratio */}
+                      {/* Masonry Image with aspect ratio variations */}
                       <img
                         src={shot.imageUrl}
                         alt={shot.title}
-                        className="asi-img w-full aspect-[16/10] object-cover rounded-[4px] transition-transform duration-500 group-hover:scale-[1.02]"
+                        className={`asi-img w-full ${shot.aspectRatio || 'aspect-[3/4]'} object-cover rounded-[4px]`}
                       />
 
-                      {/* Hover Cover Inset Dark Box overlay matching Agatha hover-center hover-boxed screenshot */}
+                      {/* Dark Hover Overlay covering full picture with 2-stage delayed content entrance */}
                       <div
                         onClick={() => setLightboxIndex(idx)}
-                        className="asi-cover absolute inset-[7%] md:inset-[10%] bg-[#121212]/94 border border-white/5 rounded-[3px] flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-95 group-hover:scale-100 cursor-pointer z-10"
+                        className="asi-cover absolute inset-0 bg-[#0b0b0b]/90 flex flex-col justify-between p-4 text-left opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-200 ease-out cursor-pointer z-10 font-mono rounded-[4px]"
                       >
-                        {/* Top-Right Favorite Heart Button inside the dark boxed overlay */}
+                        {/* Top-Right Favorite Heart Button with Delayed Zoom-In Effect */}
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
                             toggleFavorite(idx);
                           }}
-                          className="favorite-btn absolute top-3 right-4 z-20 flex items-center gap-1.5 text-xs font-mono text-white/90 hover:text-red-400 transition-colors cursor-pointer"
+                          className="favorite-btn absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 font-mono text-white/90 hover:text-red-400 transform scale-50 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out delay-150 cursor-pointer"
                           aria-label={favorited.has(idx) ? 'Remove from favorites' : 'Add to favorites'}
                         >
                           <svg
-                            className={`w-3.5 h-3.5 ${favorited.has(idx) ? 'fill-red-500 text-red-500' : 'fill-white text-white'}`}
+                            className={`w-4 h-4 ${favorited.has(idx) ? 'fill-red-500 text-red-500' : 'fill-white text-white'}`}
                             viewBox="0 0 24 24"
                           >
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                           </svg>
-                          <span className="fav-count text-[11px] font-medium">
+                          <span className="fav-count text-xs sm:text-[13px] font-mono font-medium">
                             {shot.favorites + (favorited.has(idx) ? 1 : 0)}
                           </span>
                         </button>
 
-                        {/* Centered Title & Hashtag Category */}
-                        <div className="asi-info my-auto">
-                          <h2 className="asi-title text-sm sm:text-base md:text-lg uppercase text-white font-bold tracking-[3px] mb-1.5">
+                        {/* Bottom-Left Title & Hashtag Category with Delayed Staggered Zoom-In Effect */}
+                        <div className="asi-info mt-auto font-mono text-left">
+                          <h2 className="asi-title text-xs sm:text-sm font-mono uppercase text-white font-normal tracking-normal mb-1 origin-left transform scale-75 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out delay-200">
                             {shot.title}
                           </h2>
-                          <h5 className="asi-sub-title text-xs uppercase text-[#888888] tracking-[2px]">
+                          <h5 className="asi-sub-title text-[11px] font-mono uppercase text-[#a0a0a0] tracking-normal font-light origin-left transform scale-75 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out delay-250">
                             #{shot.category}
                           </h5>
                         </div>
                       </div>
                     </div>
                   ))}
-                </div>
-
-
-                {/* Bottom Gallery Navigation */}
-                <div className="gallery-top-content border-t border-neutral-800/80 pt-6 mt-8">
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href="/portfolio"
-                      className="back-to-list text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-2 transition-colors"
-                    >
-                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M4 6h4v4H4zm0 7h4v4H4zm0 7h4v4H4zm7-14h10v4H11zm0 7h10v4H11zm0 7h10v4H11z" />
-                      </svg>
-                      <span>Back to list</span>
-                    </Link>
-
-                    <div className="flex items-center gap-5">
-                      <Link
-                        href={`/portfolio/${prevId}`}
-                        className="pn-link portf-prev text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
-                        title="Previous work"
-                      >
-                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-                        </svg>
-                        <span>Prev</span>
-                      </Link>
-
-                      <Link
-                        href={`/portfolio/${nextId}`}
-                        className="pn-link portf-next text-xs uppercase tracking-wider text-[#999999] hover:text-white inline-flex items-center gap-1 transition-colors"
-                        title="Next work"
-                      >
-                        <span>Next</span>
-                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
                 </div>
 
               </div>
