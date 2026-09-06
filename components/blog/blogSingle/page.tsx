@@ -45,10 +45,10 @@ const BlogSingle = ({ post }: BlogSingleProps) => {
   };
 
   return (
-    <section id="content-section" className="page -mt-[80px] md:-mt-[100px] relative z-10 w-full pb-16">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="content-wrap max-w-[1360px] mx-auto bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 font-mono">
+    <section id="content-section" className="agatha-page-section">
+      <div className="agatha-container">
+        <div className="agatha-card-container-compact">
+          <div className="agatha-grid-layout">
             
             {/* Left Column: Sidebar (col-md-4 col-md-pull-8) */}
             <div className="col-left md:col-span-4 lg:col-span-3.5 order-2 md:order-1">

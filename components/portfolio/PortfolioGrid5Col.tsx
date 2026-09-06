@@ -99,11 +99,9 @@ export default function PortfolioGrid5Col() {
   const displayedAlbums = filteredAlbums.slice(0, showCount);
 
   return (
-    <section id="content-section" className="-mt-[80px] md:-mt-[100px] relative z-10 w-full pb-16">
-      {/* Container matching theme container-fluid with 45px padding */}
-      <div className="w-full px-[15px] md:px-[45px]">
-        {/* .content-wrap card container with dark background & 40px padding */}
-        <div className="content-wrap bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl">
+    <section id="content-section" className="agatha-page-section">
+      <div className="agatha-container">
+        <div className="agatha-card-container">
           {/* Gallery Top Content Filter Bar matching screenshot */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             {/* Left: Stacked FILTERS heading & category links */}

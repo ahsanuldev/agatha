@@ -142,3 +142,27 @@ body {
   animation: scroll-up 50s linear infinite;
 }
 
+/* =======================================================
+   Unified Agatha Page Container & Dark Card Styling Rules
+   ======================================================= */
+.agatha-page-section {
+  @apply -mt-[80px] md:-mt-[100px] relative z-10 w-full pb-16;
+}
+
+.agatha-container {
+  @apply w-full px-[15px] md:px-[45px];
+}
+
+.agatha-card-container {
+  @apply w-full bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl;
+}
+
+.agatha-card-container-compact {
+  @apply max-w-[1320px] mx-auto bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl;
+}
+
+.agatha-grid-layout {
+  @apply grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 font-mono;
+}
+/* CSS Cache Invalidation Touch */
+

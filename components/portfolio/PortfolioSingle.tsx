@@ -45,11 +45,11 @@ export default function PortfolioSingle({ item }: PortfolioSingleProps) {
   };
 
   return (
-    <section id="content-section" className="portfolio-single portfolio-single-4 -mt-[80px] md:-mt-[100px] relative z-10 w-full pb-16">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="content-wrap max-w-[1360px] mx-auto bg-[#111111] border border-neutral-800/80 rounded-[6px] p-5 md:p-[40px] shadow-2xl">
+    <section id="content-section" className="agatha-page-section portfolio-single portfolio-single-4">
+      <div className="agatha-container">
+        <div className="agatha-card-container">
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div className="agatha-grid-layout">
               
               {/* Left Column: Metadata & Details */}
               <div className="col-left md:col-span-4 lg:col-span-3 font-mono">
