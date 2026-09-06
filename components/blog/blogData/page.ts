@@ -94,7 +94,6 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-
 export const blogCategories = [
   { label: 'Fashion', count: 26 },
   { label: 'Portraits', count: 54 },

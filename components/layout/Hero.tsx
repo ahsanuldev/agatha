@@ -91,9 +91,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Dark Cover Overlay */}
-      <div className="absolute inset-0 bg-black/60 backdrop-brightness-75 z-0" />
-
     </section>
   );
 }
