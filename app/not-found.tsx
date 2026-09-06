@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import PageWrapper from '@/components/layout/PageWrapper';
 
 export const metadata: Metadata = {
   title: '404 Error — Agatha Photography',
@@ -10,9 +9,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex flex-col justify-between overflow-x-hidden relative bg-[#131313] font-mono text-white">
-      {/* Header */}
-      <Header />
+    <PageWrapper>
+
 
       {/* Main 404 Content Section with Unsplash Background Image */}
       <main className="relative flex-1 flex items-center justify-center min-h-[calc(100vh-140px)] py-24 px-4 sm:px-6">
@@ -46,9 +44,7 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </PageWrapper>
   );
 }
+
